@@ -1,0 +1,17 @@
+{
+  "name": "kiepscy-downloader",
+  "version": "1.0.0",
+  "description": "CLI program to download show \"Świat według Kiepskich\"",
+  "main": "index.js",
+  "packageManager": "pnpm@9.4.0",
+  "scripts": {
+    "start": "node index.ts"
+  },
+  "keywords": [
+    "downloader",
+    "kiepscy",
+    "kiepscy-downloader"
+  ],
+  "author": "",
+  "license": "MIT"
+}

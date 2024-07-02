@@ -16,13 +16,13 @@
   "author": "Kaedriz",
   "license": "MIT",
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "@types/cli-progress": "^3.11.5"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "@types/cli-progress": "^3.11.5",
     "cli-progress": "^3.12.0"
   }
 }

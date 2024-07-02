@@ -4,6 +4,7 @@
   "description": "CLI program to download show \"Świat według Kiepskich\"",
   "main": "index.js",
   "packageManager": "pnpm@9.4.0",
+  "type": "module",
   "scripts": {
     "start": "node index.ts"
   },

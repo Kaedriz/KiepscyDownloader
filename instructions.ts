@@ -15,6 +15,10 @@ Use this format for specifying the seasons and episodes to download:
 - S{season number}E{episode number} for selected episode
 - S{season number}E{episode number}-E{episode number} for selected episodes in range
 
+Treat space as break between different inputs.
+Do not add additional characters than these 2, as complication may arise,
+no extensive inpretation of it are being done, so please stick to the template.
+
 Examples:
 S2 - Single season
 S3 S4 S5 - Multiple seasons

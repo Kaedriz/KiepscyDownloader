@@ -10,10 +10,11 @@ All links used to download are publicly accessible and stored in JSON format wit
 - [ ] Fully working organizing
 	- [ ] Customizable organization
 - [ ] Web UI _(not confirmed)_
+- Standalone executable
 
 # Using
 1. Clone this repo somewhere
-2. Simply run `bun index.ts`, _transition to node on release 1.2_
+2. Simply run `bun index.ts`, _for now, later there will be standalone executable_
 
 ## Examples
 `S2` - Single seasons  

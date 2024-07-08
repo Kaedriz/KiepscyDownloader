@@ -6,7 +6,7 @@
   "packageManager": "bun@1.17.1",
   "type": "module",
   "scripts": {
-    "start": "node index.ts"
+    "start": "bun index.ts"
   },
   "keywords": [
     "downloader",

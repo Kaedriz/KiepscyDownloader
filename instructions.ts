@@ -5,7 +5,7 @@
  * specify the seasons and episodes to download. It includes examples of different
  * formats that can be used to specify the episodes.
  *
- * @return {void} This function does not return a value.
+ * @return This function does not return a value.
  */
 export default function instructions() {
 	process.stdout.write(`Hi!

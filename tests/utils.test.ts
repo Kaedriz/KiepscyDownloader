@@ -14,21 +14,29 @@ describe('numberList', () => {
 		expect(numberList(3)).toEqual([1, 2, 3]);
 	});
 
-	test('List with starting value', () => {
+	test('List with starting value #1', () => {
 		expect(numberList(3, 5)).toEqual([5, 6, 7]);
 	});
 
-	test('List with starting value 2', () => {
+	test('List with starting value #2', () => {
 		expect(numberList(7, 3)).toEqual([3, 4, 5, 6, 7, 8, 9]);
 	});
 });
 
 describe('findNumberOfEpisodes', () => {
-	test('Test 1', () => {
+	test('Season number less than 1', () => {
+		expect(() => findNumberOfEpisodes(0, data)).toThrow();
+	});
+
+	test('Season number lesser than number of seasons', () => {
+		expect(() => findNumberOfEpisodes(45, data)).toThrow();
+	});
+
+	test('Test episodes count #1', () => {
 		expect(findNumberOfEpisodes(1, data)).toEqual(38);
 	});
 
-	test('Test 2', () => {
+	test('Test episodes count #2', () => {
 		expect(findNumberOfEpisodes(14, data)).toEqual(15);
 	});
 })

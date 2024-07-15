@@ -1,3 +1,11 @@
+import {
+	illegalCharactersRegex,
+	multipleEpisodesRangeRegex,
+	episodeRegex,
+	multipleSeasonsRangeRegex,
+	seasonsRegex
+} from './regexes';
+
 export async function input() {
 	const iterator = console[Symbol.asyncIterator]();
 	const text = (await iterator.next()).value;

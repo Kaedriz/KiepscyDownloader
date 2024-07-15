@@ -21,5 +21,13 @@ export function numberList(length: number, startingNumber: number = 1) {
  * @return The number of episodes in the specified season.
  */
 export function findNumberOfEpisodes(seasonNumber: number, data: any): number {
+	if (seasonNumber < 1) {
+		throw new Error('Season number must be greater than 0');
+	}
+
+	if (seasonNumber > data.length) {
+		throw new Error('Season number is not present in the data source');
+	}
+	
 	return data[seasonNumber - 1].episodes.length;
 }

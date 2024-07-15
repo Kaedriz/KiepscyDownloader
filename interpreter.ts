@@ -30,8 +30,8 @@ export function interpret(input: string) {
 	// S3E1 S3E2 S3E3 - Multiple episodes
 	// S3E1-E12 S4E1-S4E5 - Multiple episodes range spanning across seasons
 
-	// Regex for detecting character other than 'S', 'E', numbers and dashes
-	const illegalCharacters = /[^SE\d\-\s]/i;
+	// Remove leading and trailing spaces
+	input = input.trim();
 
 	const inputsList = input.split(' ');
 	let responseList = [];

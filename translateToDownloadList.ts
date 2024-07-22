@@ -33,7 +33,9 @@ export default function translateToDownloadList(input: inputMatches) {
 		downloadList.push({
 			season: firstSeasonNumber,
 			// TODO: Add safeguard if user input exceeds number of episodes in season
-			episodes: numberList(secondEpisodeNumber)
+			episodes: data[firstSeasonNumber - 1].episodes.slice(firstEpisodeNumber - 1, secondEpisodeNumber).map((episode) => {
+				return Number(episode.number);
+			})
 		});
 
 		return downloadList;

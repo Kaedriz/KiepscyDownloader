@@ -17,6 +17,18 @@ describe('Multiple episodes range', () => {
 			})
 		).toEqual([{ season: 1, episodes: numberList(3) }]);
 	});
+
+	// S3E4-E6
+	test.only('Multiple episodes in the same season, starting from middle of the season', () => {
+		expect(
+			translateToDownloadList({
+				First_Season_Number: '3',
+				First_Episode_Number: '4',
+				Second_Season_Number: undefined,
+				Second_Episode_Number: '6'
+			})
+		).toEqual([{ season: 3, episodes: numberList(3, 4) }]);
+	});
 });
 
 describe('Episodes', () => {

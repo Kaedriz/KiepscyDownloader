@@ -26,7 +26,7 @@ describe('Multiple episodes range', () => {
 				Second_Season_Number: undefined,
 				Second_Episode_Number: '3'
 			})
-		).toEqual([{ season: 1, episodes: numberList(3) }]);
+		).toEqual([{ season: 1, episodes: numberList(1, 3) }]);
 	});
 
 	// S3E4-E6
@@ -38,7 +38,7 @@ describe('Multiple episodes range', () => {
 				Second_Season_Number: undefined,
 				Second_Episode_Number: '6'
 			})
-		).toEqual([{ season: 3, episodes: numberList(3, 4) }]);
+		).toEqual([{ season: 3, episodes: numberList(4, 6) }]);
 	});
 
 	test('User input exceeds number of episodes in season', () => {
@@ -63,7 +63,7 @@ describe('Episodes', () => {
 				Second_Season_Number: undefined,
 				Second_Episode_Number: undefined
 			})
-		).toEqual([{ season: 1, episodes: numberList(1) }]);
+		).toEqual([{ season: 1, episodes: numberList(1, 38) }]);
 	});
 
 	// S3E5
@@ -90,8 +90,8 @@ describe('Multiple seasons range', () => {
 				Second_Episode_Number: undefined
 			})
 		).toEqual([
-			{ season: 1, episodes: numberList(38) },
-			{ season: 2, episodes: numberList(38) }
+			{ season: 1, episodes: numberList(1, 38) },
+			{ season: 2, episodes: numberList(1, 38) }
 		]);
 	});
 
@@ -105,9 +105,9 @@ describe('Multiple seasons range', () => {
 				Second_Episode_Number: undefined
 			})
 		).toEqual([
-			{ season: 3, episodes: numberList(34) },
-			{ season: 4, episodes: numberList(23) },
-			{ season: 5, episodes: numberList(21) }
+			{ season: 3, episodes: numberList(1, 34) },
+			{ season: 4, episodes: numberList(1, 23) },
+			{ season: 5, episodes: numberList(1, 21) }
 		]);
 	});
 });
@@ -122,6 +122,6 @@ describe('Seasons', () => {
 				Second_Season_Number: undefined,
 				Second_Episode_Number: undefined
 			})
-		).toEqual([{ season: 1, episodes: numberList(38) }]);
+		).toEqual([{ season: 1, episodes: numberList(1, 38) }]);
 	});
 });

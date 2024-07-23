@@ -54,14 +54,14 @@ describe('Invalid syntax', () => {
 // Test for multiple episodes range detection
 describe('Multiple episodes range detection', () => {
 	test('Test #1', () => {
-		expect(interpret('S1E1-E2')).toEqual([{ season: 1, episodes: numberList(2) }]);
+		expect(interpret('S1E1-E2')).toEqual([{ season: 1, episodes: numberList(1, 2) }]);
 	});
 });
 
 // Test for episode detection
 describe('Episode detection', () => {
 	test('Test #1', () => {
-		expect(interpret('S1E1')).toEqual([{ season: 1, episodes: numberList(1) }]);
+		expect(interpret('S1E1')).toEqual([{ season: 1, episodes: [1] }]);
 	});
 });
 

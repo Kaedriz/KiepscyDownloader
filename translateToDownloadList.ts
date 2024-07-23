@@ -64,7 +64,7 @@ export default function translateToDownloadList(input: inputMatches) {
 		for (let index = firstSeasonNumber; index <= secondSeasonNumber; index++) {
 			downloadList.push({
 				season: index,
-				episodes: numberList(findNumberOfEpisodes(index, data))
+				episodes: numberList(1, findNumberOfEpisodes(index, data))
 			});
 		}
 
@@ -74,7 +74,7 @@ export default function translateToDownloadList(input: inputMatches) {
 	// Single season
 	downloadList.push({
 		season: firstSeasonNumber,
-		episodes: numberList(findNumberOfEpisodes(firstSeasonNumber, data))
+		episodes: numberList(1, findNumberOfEpisodes(firstSeasonNumber, data))
 	});
 
 	return downloadList;

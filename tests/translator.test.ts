@@ -41,15 +41,18 @@ describe('Multiple episodes range', () => {
 		).toEqual([{ season: 3, episodes: numberList(4, 6) }]);
 	});
 
-	test('User input exceeds number of episodes in season', () => {
-		expect(() =>
+	test('Multiple episodes across seasons', () => {
+		expect(
 			translateToDownloadList({
-				First_Season_Number: '5',
-				First_Episode_Number: '8',
-				Second_Season_Number: undefined,
-				Second_Episode_Number: '24'
+				First_Season_Number: '1',
+				First_Episode_Number: '3',
+				Second_Season_Number: '2',
+				Second_Episode_Number: '6'
 			})
-		);
+		).toEqual([
+			{ season: 1, episodes: numberList(3, 38) },
+			{ season: 2, episodes: numberList(1, 6) }
+		]);
 	});
 });
 

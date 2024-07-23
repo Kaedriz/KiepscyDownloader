@@ -31,13 +31,15 @@ describe('Multiple episodes range', () => {
 	});
 
 	test('User input exceeds number of episodes in season', () => {
-		expect(() => translateToDownloadList({
-			First_Season_Number: '5',
-			First_Episode_Number: '8',
-			Second_Season_Number: undefined,
-			Second_Episode_Number: '24'
-		}))
-	})
+		expect(() =>
+			translateToDownloadList({
+				First_Season_Number: '5',
+				First_Episode_Number: '8',
+				Second_Season_Number: undefined,
+				Second_Episode_Number: '24'
+			})
+		);
+	});
 });
 
 describe('Episodes', () => {

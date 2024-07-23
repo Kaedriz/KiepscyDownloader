@@ -29,7 +29,14 @@ export default function translateToDownloadList(input: inputMatches) {
 
 	// Multiple episodes in the same season
 	if (input.First_Episode_Number && input.Second_Episode_Number) {
-		// TODO: Add support for starting with number othen than 1
+		// Safeguard if user input exceeds number of episodes in season
+		if (
+			firstEpisodeNumber > findNumberOfEpisodes(firstSeasonNumber, data) ||
+			secondEpisodeNumber > findNumberOfEpisodes(firstSeasonNumber, data)
+		) {
+			throw new Error('Second episode number exceeds number of episodes in the season');
+		}
+
 		downloadList.push({
 			season: firstSeasonNumber,
 			// TODO: Add safeguard if user input exceeds number of episodes in season

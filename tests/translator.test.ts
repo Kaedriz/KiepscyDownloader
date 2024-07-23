@@ -6,6 +6,17 @@ import translateToDownloadList from '../translateToDownloadList';
 console.log('Tests for translation interface for interpretation layer');
 
 describe('Multiple episodes range', () => {
+	test('User input exceeds number of episodes in season', () => {
+		expect(() =>
+			translateToDownloadList({
+				First_Season_Number: '5',
+				First_Episode_Number: '8',
+				Second_Season_Number: undefined,
+				Second_Episode_Number: '24'
+			})
+		);
+	});
+
 	// S1E1-E3
 	test('Multiple episodes in the same season', () => {
 		expect(

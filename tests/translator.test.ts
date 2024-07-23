@@ -30,7 +30,7 @@ describe('Multiple episodes range', () => {
 		).toEqual([{ season: 3, episodes: numberList(3, 4) }]);
 	});
 
-	test.only('User input exceeds number of episodes in season', () => {
+	test('User input exceeds number of episodes in season', () => {
 		expect(() => translateToDownloadList({
 			First_Season_Number: '5',
 			First_Episode_Number: '8',

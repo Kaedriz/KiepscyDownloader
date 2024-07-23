@@ -1,16 +1,16 @@
 /**
  * Generates an array of numbers from 1 to the specified input.
  *
- * @param length - The upper limit of the range.
+ * @param startingNumber - The start of the range.
+ * @param endingNumber - The end of the range.
  * @return An array of generated numbers.
  */
-// TODO: Add support for starting with number othen than 1
-export function numberList(length: number, startingNumber: number = 1) {
+export function numberList(startingNumber: number = 1, endingNumber: number) {
 	if (startingNumber < 1) {
 		throw new Error('Starting number must be greater than 0');
 	}
 
-	return Array.from(Array(length), (_, index) => index + startingNumber);
+	return Array.from(Array(endingNumber - startingNumber + 1), (_, index) => index + startingNumber);
 }
 
 /**

@@ -34,7 +34,7 @@ export default function translateToDownloadList(input: inputMatches) {
 			firstEpisodeNumber > findNumberOfEpisodes(firstSeasonNumber, data) ||
 			secondEpisodeNumber > findNumberOfEpisodes(firstSeasonNumber, data)
 		) {
-			throw new Error('Second episode number exceeds number of episodes in the season');
+			throw new Error('Episode number exceeds number of episodes in the season');
 		}
 
 		downloadList.push({

@@ -22,7 +22,7 @@ export default async function download(URL: string, fileName: string) {
 	progressBar.start(contentLengthMb, 0, {
 		speed: 'N/A'
 	});
-	
+
 	const file = Bun.file(`${fileName}.mp4`);
 	const writeStream = file.writer();
 

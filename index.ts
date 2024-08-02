@@ -9,18 +9,26 @@ instructions();
 // Input from user
 const userInput = await input();
 
-const links = interpret(userInput);
+let links: seasonList[];
 
-// console.log("Downloading...");
-await download(
-	// "http://ipla-e1-78.pluscdn.pl/p/movies/8f/8fc6aa7d3808f476dee9b99722343b30.mp4"
-	'http://cachefly.cachefly.net/100mb.test'
-);
+try {
+	links = interpret(userInput);
+	console.log('To download: ');
+	console.log(links);
+} catch (error: any) {
+	console.error('Error:', error.message);
+	process.exit(1);
+}
 
-// const file = Bun.file("output/video.mp4");
-// const writeStream = file.writer();
-
-// writeStream.write(await response.arrayBuffer());
-// writeStream.end();
+// TODO: Add organizing to folders
+for (const link of links) {
+	for (const episode of link.episodes) {
+		await download(
+			episode.link
+			// TODO: Change to func, to allow for more flexibility
+			, `S${link.season}E${episode.number}`
+		);
+	}
+}
 
 process.exit(0);

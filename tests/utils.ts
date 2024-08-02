@@ -1,11 +1,11 @@
 /**
  * Generates an array of numbers from `startingNumber` to `startingNumber`.
  *
- * @param endingNumber - The end of the range.
- * @param startingNumber - The start of the range. (Default: 1)
+ * @param startingNumber - The start of the range.
+ * @param endingNumber - The end of the range. (Defaults to `startingNumber`)
  * @return An array of generated numbers.
  */
-export function numberList(endingNumber: number, startingNumber: number = 1) {
+export function numberList(startingNumber: number, endingNumber: number = startingNumber) {
 	if (startingNumber < 1) {
 		throw new Error('Starting number must be greater than 0');
 	}

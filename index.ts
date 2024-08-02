@@ -1,8 +1,7 @@
 import { input, interpret } from './interpreter';
 import instructions from './instructions';
 import download from './downloader';
-
-import data from './source.json';
+import { seasonList } from './types';
 
 // Read instructions to the user
 instructions();

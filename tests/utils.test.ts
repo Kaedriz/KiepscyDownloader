@@ -7,19 +7,19 @@ console.log('Tests for utility functions');
 
 describe('numberList', () => {
 	test('Starting number less than 1', () => {
-		expect(() => numberList(3, 0)).toThrow();
-	})
+		expect(() => numberList(-2, 0)).toThrow();
+	});
 
-	test('Simple list, starting from default value (1)', () => {
-		expect(numberList(3)).toEqual([1, 2, 3]);
+	test('Simple list, with only "starting value"', () => {
+		expect(numberList(2)).toEqual([2]);
 	});
 
 	test('List with starting value #1', () => {
-		expect(numberList(3, 5)).toEqual([5, 6, 7]);
+		expect(numberList(3, 5)).toEqual([3, 4, 5]);
 	});
 
 	test('List with starting value #2', () => {
-		expect(numberList(7, 3)).toEqual([3, 4, 5, 6, 7, 8, 9]);
+		expect(numberList(7, 15)).toEqual([7, 8, 9, 10, 11, 12, 13, 14, 15]);
 	});
 });
 

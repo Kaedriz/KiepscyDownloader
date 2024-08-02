@@ -47,8 +47,10 @@ export default async function download(url: string, fileName: string) {
 		// Update progress indicator
 		progressBar.update(progress);
 	}
+
+	// Stop progress bar (Set progress to 100%)
 	progressBar.stop();
-	
+
 	// Close file writing stream
 	writeStream.end();
 

@@ -10,7 +10,8 @@ All links used to download are publicly accessible and stored in JSON format wit
 - [ ] Fully working organizing
 	- [ ] Customizable organization
 - [ ] Web UI _(not confirmed)_
-- Standalone executable
+- [ ] Standalone executable
+- [ ] Health check utility for links
 
 # Using
 1. Clone this repo somewhere

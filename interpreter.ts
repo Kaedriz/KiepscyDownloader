@@ -1,3 +1,4 @@
+import translateToDownloadList, { inputMatches } from './translateToDownloadList';
 import {
 	illegalCharactersRegex,
 	multipleEpisodesRangeRegex,
@@ -5,6 +6,8 @@ import {
 	multipleSeasonsRangeRegex,
 	seasonsRegex
 } from './regexes';
+
+const debug = false;
 
 export async function input() {
 	const iterator = console[Symbol.asyncIterator]();
@@ -33,44 +36,93 @@ export function interpret(input: string) {
 	// Remove leading and trailing spaces
 	input = input.trim();
 
+	// Split the input by spaces
 	const inputsList = input.split(' ');
-	let responseList = [];
+	let downloadList: {
+		season: number;
+		episodes: number[];
+	}[] = [];
 
 	for (const inputItem of inputsList) {
-		// Check for illegal characters
-		if (illegalCharacters.test(inputItem) == true) {
+		// Check for illegal characters, so any characters other than 'S', 'E', numbers and dashes
+		if (illegalCharactersRegex.test(inputItem) == true) {
 			throw new Error('Illegal characters found in input. Please revise it and try again.');
 		}
 
-		// Check in input starts with 'S'
-		if (!inputItem.startsWith('S')) {
-			throw new Error('Please specify season number first next time.');
+		// Check if multiple episodes range
+		// S5E1-E12
+		// S5E1-S8E12 (In future)
+		if (multipleEpisodesRangeRegex.test(inputItem) == true) {
+			if (debug) {
+				console.log('REGEX: Multiple episodes range');
+			}
+			
+			const items = multipleEpisodesRangeRegex.exec(inputItem)?.groups as unknown as inputMatches;
+
+			if (!items) {
+				throw new Error('some temp error');
+			}
+
+			downloadList = downloadList.concat(translateToDownloadList(items));
+			continue;
 		}
 
-		// Season
-		if (!inputItem.includes('E')) {
-			console.log('Season');
-			return;
+		// Check if episodes
+		// S5E1 S7E3
+		if (episodeRegex.test(inputItem) == true) {
+			if (debug) {
+				console.log('REGEX: Episode');
+			}
+
+			const items = episodeRegex.exec(inputItem)?.groups as unknown as inputMatches;
+
+			if (!items) {
+				throw new Error('some temp error');
+			}
+
+			downloadList = downloadList.concat(translateToDownloadList(items));
+			continue;
 		}
 
-		// Multiple seasons range
-		if (!inputItem.includes('E') && inputItem.includes('-')) {
-			console.log('Multiple seasons range');
-			return;
+		// Check if multiple seasons range
+		// S3-S5
+		if (multipleSeasonsRangeRegex.test(inputItem) == true) {
+			if (debug) {
+				console.log('REGEX: Multiple seasons range');
+			}
+
+			const items = multipleSeasonsRangeRegex.exec(inputItem)?.groups as unknown as inputMatches;
+
+			if (!items) {
+				throw new Error('some temp error');
+			}
+
+			downloadList = downloadList.concat(translateToDownloadList(items));
+			continue;
 		}
 
-		// Episode
-		if (inputItem.includes('E') && !inputItem.includes('-')) {
-			// S5E12
-			console.log('Episode');
-			return;
+		// Check if seasons
+		// S1
+		// S2 S3
+		if (seasonsRegex.test(inputItem) == true) {
+			if (debug) {
+				console.log('REGEX: Season');
+			}
+
+			const items = seasonsRegex.exec(inputItem)?.groups as unknown as inputMatches;
+
+			if (!items) {
+				throw new Error('some temp error');
+			}
+
+			downloadList = downloadList.concat(translateToDownloadList(items));
+			continue;
 		}
 
-		// Multiple episodes range
-		if (inputItem.includes('E') && inputItem.includes('-')) {
-			// S5E1-E12
-			console.log('Multiple episodes range');
-			return;
+		if (downloadList.length == 0) {
+			throw new Error('Invalid syntax. Please revise it and try again.');
 		}
 	}
+
+	return downloadList;
 }

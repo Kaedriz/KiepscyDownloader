@@ -5,10 +5,14 @@ All links used to download are publicly accessible and stored in JSON format wit
 
 # Goal
 - [ ] Fully working downloading
-    - [ ] Downloading of selected episodes
-    - [ ] Downloading of entire season
+    - [X] Downloading of individual episodes
+    - [ ] Downloading of episodes range
+    - [ ] Downloading of episodes range, across seasons
+    - [X] Downloading of entire seasons
+    - [ ] Downloading of entire seasons range
 - [ ] Fully working organizing
 	- [ ] Customizable organization
+- [ ] Options (ex. change parallelization of download)
 - [ ] Web UI _(not confirmed)_
 - [ ] Standalone executable
 - [ ] Health check utility for links

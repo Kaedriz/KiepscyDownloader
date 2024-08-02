@@ -1,9 +1,9 @@
 import progressBar from './progressIndicator';
 
-export default async function download(URL: string) {
+export default async function download(URL: string, fileName: string) {
 	const response = await fetch(URL);
 
-	console.log('Downloading...');
+	console.log(`Downloading ${fileName} from ${URL}.`);
 
 	// Throw error if problem with fetching
 	if (!response.ok) throw new Error('Problem with downloading content.');
@@ -22,6 +22,9 @@ export default async function download(URL: string) {
 	progressBar.start(contentLengthMb, 0, {
 		speed: 'N/A'
 	});
+	
+	const file = Bun.file(`${fileName}.mp4`);
+	const writeStream = file.writer();
 
 	// TODO: Add download speed indicator
 	while (true) {
@@ -33,6 +36,8 @@ export default async function download(URL: string) {
 			break;
 		}
 
+		writeStream.write(value);
+
 		// Summarize received bits
 		receivedLength += value.length;
 
@@ -42,6 +47,9 @@ export default async function download(URL: string) {
 		// Update progress indicator
 		progressBar.update(progress);
 	}
+
+	// Close file writing stream
+	writeStream.end();
 
 	// Release reader
 	reader.releaseLock();

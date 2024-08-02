@@ -1,7 +1,7 @@
 /**
- * Generates an array of numbers from 1 to the specified input.
+ * Generates an array of numbers from `startingNumber` to `startingNumber`.
  *
- * @param startingNumber - The start of the range.
+ * @param startingNumber - The start of the range. (Default: 1)
  * @param endingNumber - The end of the range.
  * @return An array of generated numbers.
  */

@@ -1,6 +1,7 @@
 // File which changes returned objects from interpreter to list of episodes to downlaod
 
 import { findNumberOfEpisodes, numberList } from './tests/utils';
+import { seasonList } from './types';
 
 import data from './source.json';
 
@@ -12,10 +13,7 @@ export interface inputMatches {
 }
 
 export default function translateToDownloadList(input: inputMatches) {
-	let downloadList: {
-		season: number;
-		episodes: number[];
-	}[] = [];
+	let downloadList: seasonList[] = [];
 
 	const firstSeasonNumber = Number(input.First_Season_Number);
 	const firstEpisodeNumber = Number(input.First_Episode_Number);

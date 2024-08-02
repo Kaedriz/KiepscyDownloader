@@ -6,6 +6,7 @@ import {
 	multipleSeasonsRangeRegex,
 	seasonsRegex
 } from './regexes';
+import { seasonList } from './types';
 
 const debug = false;
 
@@ -38,10 +39,7 @@ export function interpret(input: string) {
 
 	// Split the input by spaces
 	const inputsList = input.split(' ');
-	let downloadList: {
-		season: number;
-		episodes: number[];
-	}[] = [];
+	let downloadList: seasonList[] = [];
 
 	for (const inputItem of inputsList) {
 		// Check for illegal characters, so any characters other than 'S', 'E', numbers and dashes

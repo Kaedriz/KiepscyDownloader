@@ -9,8 +9,8 @@ export default async function download(url: string, fileName: string) {
 	if (!response.ok) throw new Error('Problem with downloading content.');
 
 	// Get content length
-	const contentLength = response.headers.get('Content-Length') as string;
-	const contentLengthMb = Math.floor(Number.parseInt(contentLength) / 1024 / 1024);
+	const contentLength = Number.parseInt(response.headers.get('Content-Length') as string);
+	const contentLengthMb = Math.floor(contentLength / 1024 / 1024);
 
 	// Variable for received bits
 	let receivedLength = 0;
@@ -19,7 +19,7 @@ export default async function download(url: string, fileName: string) {
 	const reader = response?.body?.getReader() as ReadableStreamDefaultReader<Uint8Array>;
 
 	// Start progress bar
-	progressBar.start(contentLengthMb, 0, {
+	progressBar.start(100, 0, {
 		speed: 'N/A'
 	});
 
@@ -42,12 +42,13 @@ export default async function download(url: string, fileName: string) {
 		receivedLength += value.length;
 
 		// Calculate current progress
-		const progress = Math.floor((receivedLength / Number.parseInt(contentLength)) * contentLengthMb);
+		const progress = Math.floor((receivedLength / contentLength) * 100);
 
 		// Update progress indicator
 		progressBar.update(progress);
 	}
-
+	progressBar.stop();
+	
 	// Close file writing stream
 	writeStream.end();
 

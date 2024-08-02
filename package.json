@@ -1,6 +1,6 @@
 {
   "name": "kiepscy-downloader",
-  "version": "0.5.0",
+  "version": "0.8.0",
   "description": "CLI program to download episodes of popular polish show \"Świat według Kiepskich\"",
   "main": "index.js",
   "packageManager": "bun@1.17.1",

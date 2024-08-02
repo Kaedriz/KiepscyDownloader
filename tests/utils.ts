@@ -10,6 +10,10 @@ export function numberList(startingNumber: number = 1, endingNumber: number) {
 		throw new Error('Starting number must be greater than 0');
 	}
 
+	if (startingNumber > endingNumber) {
+		throw new Error('Ending number must be greater than starting number');
+	}
+
 	return Array.from(Array(endingNumber - startingNumber + 1), (_, index) => index + startingNumber);
 }
 

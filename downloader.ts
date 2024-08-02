@@ -1,9 +1,9 @@
 import progressBar from './progressIndicator';
 
-export default async function download(URL: string, fileName: string) {
-	const response = await fetch(URL);
+export default async function download(url: string, fileName: string) {
+	const response = await fetch(url);
 
-	console.log(`Downloading ${fileName} from ${URL}.`);
+	console.log(`Downloading ${fileName} from ${url}.`);
 
 	// Throw error if problem with fetching
 	if (!response.ok) throw new Error('Problem with downloading content.');

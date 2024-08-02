@@ -39,4 +39,4 @@ describe('findNumberOfEpisodes', () => {
 	test('Test episodes count #2', () => {
 		expect(findNumberOfEpisodes(14, data)).toEqual(15);
 	});
-})
+});

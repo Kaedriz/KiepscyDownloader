@@ -67,21 +67,16 @@ export default function translateToDownloadList(input: inputMatches) {
 
 	// Multiple seasons range
 	if (input.First_Season_Number && input.Second_Season_Number) {
-		for (let index = firstSeasonNumber; index <= secondSeasonNumber; index++) {
-			// Make a list of seasons
-			let seasonsList = numberList(1, findNumberOfEpisodes(index, data));
-
-			for (let seasonNumber of seasonsList) {
-				downloadList.push({
-					season: index,
-					episodes: data[seasonNumber - 1].episodes.map((episode) => {
-						return {
-							number: episode.number,
-							link: episode.link_url
-						};
-					})
-				});
-			}
+		for (let seasonNumber = firstSeasonNumber; seasonNumber <= secondSeasonNumber; seasonNumber++) {
+			downloadList.push({
+				season: seasonNumber,
+				episodes: data[seasonNumber - 1].episodes.map((episode) => {
+					return {
+						number: episode.number,
+						link: episode.link_url
+					};
+				})
+			});
 		}
 
 		return downloadList;

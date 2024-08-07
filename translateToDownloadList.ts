@@ -25,7 +25,7 @@ export default function translateToDownloadList(input: inputMatches) {
 		return downloadList;
 	}
 
-	// Multiple episodes in the same season
+	// Multiple episodes range in the same season
 	if (input.First_Episode_Number && input.Second_Episode_Number) {
 		// Safeguard if user input exceeds number of episodes in season
 		if (
@@ -40,7 +40,10 @@ export default function translateToDownloadList(input: inputMatches) {
 			episodes: data[firstSeasonNumber - 1].episodes
 				.slice(firstEpisodeNumber - 1, secondEpisodeNumber)
 				.map((episode) => {
-					return Number(episode.number);
+					return {
+						number: episode.number,
+						link: episode.link_url
+					};
 				})
 		});
 
@@ -51,7 +54,12 @@ export default function translateToDownloadList(input: inputMatches) {
 	if (input.First_Episode_Number) {
 		downloadList.push({
 			season: firstSeasonNumber,
-			episodes: [firstEpisodeNumber]
+			episodes: [
+				{
+					number: firstEpisodeNumber,
+					link: data[firstSeasonNumber - 1].episodes[firstEpisodeNumber - 1].link_url
+				}
+			]
 		});
 
 		return downloadList;
@@ -60,10 +68,20 @@ export default function translateToDownloadList(input: inputMatches) {
 	// Multiple seasons range
 	if (input.First_Season_Number && input.Second_Season_Number) {
 		for (let index = firstSeasonNumber; index <= secondSeasonNumber; index++) {
-			downloadList.push({
-				season: index,
-				episodes: numberList(1, findNumberOfEpisodes(index, data))
-			});
+			// Make a list of seasons
+			let seasonsList = numberList(1, findNumberOfEpisodes(index, data));
+
+			for (let seasonNumber of seasonsList) {
+				downloadList.push({
+					season: index,
+					episodes: data[seasonNumber - 1].episodes.map((episode) => {
+						return {
+							number: episode.number,
+							link: episode.link_url
+						};
+					})
+				});
+			}
 		}
 
 		return downloadList;
@@ -72,7 +90,12 @@ export default function translateToDownloadList(input: inputMatches) {
 	// Single season
 	downloadList.push({
 		season: firstSeasonNumber,
-		episodes: numberList(1, findNumberOfEpisodes(firstSeasonNumber, data))
+		episodes: data[firstSeasonNumber - 1].episodes.map((episode) => {
+			return {
+				number: episode.number,
+				link: episode.link_url
+			};
+		})
 	});
 
 	return downloadList;

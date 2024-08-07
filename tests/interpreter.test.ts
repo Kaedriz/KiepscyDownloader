@@ -45,8 +45,24 @@ describe('Invalid syntax', () => {
 
 	test('Space around dash, invalid syntax, but for now somewhat supported', () => {
 		expect(interpret('S5E14    - S5E17')).toEqual([
-			{ season: 5, episodes: [14] },
-			{ season: 5, episodes: [17] }
+			{
+				season: 5,
+				episodes: [
+					{
+						number: 14,
+						link: expect.any(String)
+					}
+				]
+			},
+			{
+				season: 5,
+				episodes: [
+					{
+						number: 17,
+						link: expect.any(String)
+					}
+				]
+			}
 		]);
 	});
 });
@@ -54,14 +70,34 @@ describe('Invalid syntax', () => {
 // Test for multiple episodes range detection
 describe('Multiple episodes range detection', () => {
 	test('Test #1', () => {
-		expect(interpret('S1E1-E2')).toEqual([{ season: 1, episodes: numberList(1, 2) }]);
+		expect(interpret('S1E1-E2')).toEqual([
+			{
+				season: 1,
+				episodes: numberList(1, 2).map((number) => {
+					return {
+						number,
+						link: expect.any(String)
+					};
+				})
+			}
+		]);
 	});
 });
 
 // Test for episode detection
 describe('Episode detection', () => {
 	test('Test #1', () => {
-		expect(interpret('S1E1')).toEqual([{ season: 1, episodes: [1] }]);
+		expect(interpret('S1E1')).toEqual([
+			{
+				season: 1,
+				episodes: [
+					{
+						number: 1,
+						link: expect.any(String)
+					}
+				]
+			}
+		]);
 	});
 });
 

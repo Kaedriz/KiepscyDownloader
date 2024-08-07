@@ -26,7 +26,17 @@ describe('Multiple episodes range', () => {
 				Second_Season_Number: undefined,
 				Second_Episode_Number: '3'
 			})
-		).toEqual([{ season: 1, episodes: numberList(1, 3) }]);
+		).toEqual([
+			{
+				season: 1,
+				episodes: numberList(1, 3).map((number) => {
+					return {
+						number,
+						link: expect.any(String)
+					};
+				})
+			}
+		]);
 	});
 
 	// S3E4-E6
@@ -38,7 +48,17 @@ describe('Multiple episodes range', () => {
 				Second_Season_Number: undefined,
 				Second_Episode_Number: '6'
 			})
-		).toEqual([{ season: 3, episodes: numberList(4, 6) }]);
+		).toEqual([
+			{
+				season: 3,
+				episodes: numberList(4, 6).map((number) => {
+					return {
+						number,
+						link: expect.any(String)
+					};
+				})
+			}
+		]);
 	});
 
 	test.todo('Multiple episodes across seasons', () => {
@@ -50,8 +70,24 @@ describe('Multiple episodes range', () => {
 				Second_Episode_Number: '6'
 			})
 		).toEqual([
-			{ season: 1, episodes: numberList(3, 38) },
-			{ season: 2, episodes: numberList(1, 6) }
+			{
+				season: 1,
+				episodes: numberList(3, 38).map((number) => {
+					return {
+						number,
+						link: expect.any(String)
+					};
+				})
+			},
+			{
+				season: 2,
+				episodes: numberList(1, 6).map((number) => {
+					return {
+						number,
+						link: expect.any(String)
+					};
+				})
+			}
 		]);
 	});
 });
@@ -66,7 +102,17 @@ describe('Episodes', () => {
 				Second_Season_Number: undefined,
 				Second_Episode_Number: undefined
 			})
-		).toEqual([{ season: 1, episodes: [1] }]);
+		).toEqual([
+			{
+				season: 1,
+				episodes: [
+					{
+						number: 1,
+						link: expect.any(String)
+					}
+				]
+			}
+		]);
 	});
 
 	// S3E5
@@ -78,7 +124,17 @@ describe('Episodes', () => {
 				Second_Season_Number: undefined,
 				Second_Episode_Number: undefined
 			})
-		).toEqual([{ season: 4, episodes: [7] }]);
+		).toEqual([
+			{
+				season: 4,
+				episodes: [
+					{
+						number: 7,
+						link: expect.any(String)
+					}
+				]
+			}
+		]);
 	});
 });
 
@@ -93,8 +149,24 @@ describe('Multiple seasons range', () => {
 				Second_Episode_Number: undefined
 			})
 		).toEqual([
-			{ season: 1, episodes: numberList(1, 38) },
-			{ season: 2, episodes: numberList(1, 38) }
+			{
+				season: 1,
+				episodes: numberList(1, 38).map((number) => {
+					return {
+						number,
+						link: expect.any(String)
+					};
+				})
+			},
+			{
+				season: 2,
+				episodes: numberList(1, 38).map((number) => {
+					return {
+						number,
+						link: expect.any(String)
+					};
+				})
+			}
 		]);
 	});
 
@@ -108,9 +180,33 @@ describe('Multiple seasons range', () => {
 				Second_Episode_Number: undefined
 			})
 		).toEqual([
-			{ season: 3, episodes: numberList(1, 34) },
-			{ season: 4, episodes: numberList(1, 23) },
-			{ season: 5, episodes: numberList(1, 21) }
+			{
+				season: 3,
+				episodes: numberList(1, 34).map((number) => {
+					return {
+						number,
+						link: expect.any(String)
+					};
+				})
+			},
+			{
+				season: 4,
+				episodes: numberList(1, 23).map((number) => {
+					return {
+						number,
+						link: expect.any(String)
+					};
+				})
+			},
+			{
+				season: 5,
+				episodes: numberList(1, 21).map((number) => {
+					return {
+						number,
+						link: expect.any(String)
+					};
+				})
+			}
 		]);
 	});
 });
@@ -125,6 +221,16 @@ describe('Seasons', () => {
 				Second_Season_Number: undefined,
 				Second_Episode_Number: undefined
 			})
-		).toEqual([{ season: 1, episodes: numberList(1, 38) }]);
+		).toEqual([
+			{
+				season: 1,
+				episodes: numberList(1, 38).map((number) => {
+					return {
+						number,
+						link: expect.any(String)
+					};
+				})
+			}
+		]);
 	});
 });

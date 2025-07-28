@@ -1,6 +1,11 @@
 # Kiepscy Downloader (Work in Progress)
 CLI used to download episodes of popular polish series "Świat według Kiepskich" and organize them.
 
+> [!WARNING]  
+> This no longer works as of 28.07.2025.
+>
+> Links that directed to videos are no longer working, and as this tool relies on that, it no longer works as well.
+
 All links used to download are publicly accessible and stored in JSON format with small metadata in `source.json`
 
 # Goal
